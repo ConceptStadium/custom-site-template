@@ -56,6 +56,7 @@ if ! $(noroot wp core is-installed); then
   noroot wp option update start_of_week "1"
   noroot wp option update time_format "H:i"
   noroot wp option update users_can_register "0"
+  noroot wp option update WPLANG "en_GB"
 
   echo "- Setting Reading Settings..."
   noroot wp option update blog_public "0"
