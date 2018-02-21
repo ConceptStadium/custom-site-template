@@ -49,6 +49,9 @@ if ! $(noroot wp core is-installed); then
     # Change permalink structure
     wp option update permalink_structure "/%category%/%postname%/"
     wp option update category_base "/."
+
+    # Change Timezone
+    wp option update timezone_string "Malta"
 else
   echo "Updating WordPress Stable..."
   cd ${VVV_PATH_TO_SITE}/public_html
