@@ -45,6 +45,10 @@ if ! $(noroot wp core is-installed); then
   fi
 
   noroot wp core ${INSTALL_COMMAND} --url="${DOMAIN}" --quiet --title="${SITE_TITLE}" --admin_name=conceptstadium --admin_email="claude@conceptstadium.com" --admin_password="password"
+
+    # Change permalink structure
+    wp option update permalink_structure "/%category%/%postname%/"
+    wp option update category_base "/."
 else
   echo "Updating WordPress Stable..."
   cd ${VVV_PATH_TO_SITE}/public_html
