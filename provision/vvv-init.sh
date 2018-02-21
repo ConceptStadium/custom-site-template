@@ -52,6 +52,11 @@ if ! $(noroot wp core is-installed); then
 
     # Change Timezone
     wp option update timezone_string "Malta"
+    
+    # Install the latest versions from wordpress.org and activate
+    wp plugin install duplicate-post --activate
+    wp plugin install all-in-one-wp-migration --activate
+    wp plugin install enable-media-replace --activate
 else
   echo "Updating WordPress Stable..."
   cd ${VVV_PATH_TO_SITE}/public_html
