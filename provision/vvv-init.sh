@@ -46,12 +46,26 @@ if ! $(noroot wp core is-installed); then
 
   noroot wp core ${INSTALL_COMMAND} --url="${DOMAIN}" --quiet --title="${SITE_TITLE}" --admin_name=conceptstadium --admin_email="claude@conceptstadium.com" --admin_password="password"
 
-  echo "- Changing Permalink Structure..."
+  echo "- Setting Permalink Structure..."
   noroot wp option update permalink_structure "/%category%/%postname%/"
   noroot wp option update category_base "/."
 
-  echo "- Changing Timezone..."
+  echo "- Setting General Settings..."
+  noroot wp option update date_format "F j, Y"
   noroot wp option update timezone_string "Europe/Malta"
+  noroot wp option update start_of_week "1"
+  noroot wp option update time_format "H:i"
+  noroot wp option update users_can_register "0"
+
+  echo "- Setting Reading Settings..."
+  noroot wp option update blog_public "0"
+
+  echo "- Setting Discussion Settings..."
+  noroot wp option update close_comments_days_old "0"
+  noroot wp option update close_comments_for_old_posts "1"
+  noroot wp option update comment_registration "1"
+  noroot wp option update default_comment_status "closed"
+  noroot wp option update show_avatars ""
   
   echo "- Uninstalling and Deleting default plugins..."
   noroot wp plugin uninstall hello --deactivate
