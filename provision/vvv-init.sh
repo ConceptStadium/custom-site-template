@@ -46,14 +46,14 @@ if ! $(noroot wp core is-installed); then
 
   noroot wp core ${INSTALL_COMMAND} --url="${DOMAIN}" --quiet --title="${SITE_TITLE}" --admin_name=conceptstadium --admin_email="claude@conceptstadium.com" --admin_password="password"
 
-  # Change permalink structure
+  echo "- Changing Permalink Structure..."
   noroot wp option update permalink_structure "/%category%/%postname%/"
   noroot wp option update category_base "/."
 
-  # Change Timezone
-  noroot wp option update timezone_string "Malta"
+  echo "- Changing Timezone..."
+  noroot wp option update timezone_string "Europe/Malta"
   
-  # Install the latest versions from wordpress.org and activate
+  echo "- Installing and Activating plugins..."
   noroot wp plugin install duplicate-post --activate
   noroot wp plugin install all-in-one-wp-migration --activate
   noroot wp plugin install enable-media-replace --activate
