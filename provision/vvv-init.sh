@@ -53,6 +53,12 @@ if ! $(noroot wp core is-installed); then
   echo "- Changing Timezone..."
   noroot wp option update timezone_string "Europe/Malta"
   
+  echo "- Uninstalling and Deleting default plugins..."
+  noroot wp plugin uninstall hello --deactivate
+  noroot wp plugin delete hello
+  noroot wp plugin uninstall akismet --deactivate
+  noroot wp plugin delete akismet
+  
   echo "- Installing and Activating plugins..."
   noroot wp plugin install duplicate-post --activate
   noroot wp plugin install all-in-one-wp-migration --activate
